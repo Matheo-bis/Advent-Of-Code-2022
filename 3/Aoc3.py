@@ -17,3 +17,12 @@ for line in lines:
             count+=priorities[char]
             break
 print(count)
+
+count=0
+for i in range(0,len(lines),3):
+    group=lines[i:i+3]
+    for char in group[0]:
+        if group[1].__contains__(char) and group[2].__contains__(char):
+            count+=priorities[char]
+            break
+print(count)
