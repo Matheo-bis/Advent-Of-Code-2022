@@ -43,6 +43,17 @@ public class AoC7 {
         int total = 70000000;
         int needed = 30000000;
         int used = root.getSize();
-        
+        int free = total-used;
+        String candidate = "";
+        int candidatesize = 80000000;
+        for (Directory directory : directories) {
+            int newfree = free+directory.getSize();
+            if (newfree>=needed && directory.getSize()<candidatesize){
+                candidate=directory.getName();
+                candidatesize=directory.getSize();
+            }
+        }
+        System.out.println(candidate);
+        System.out.println(candidatesize);
     }
 }
