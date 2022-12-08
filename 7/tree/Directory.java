@@ -21,6 +21,7 @@ public class Directory implements Sizeable, Nameable{
     public int getSize() {
         int size = 0;
         for (String iterable_element : content.keySet()) {
+            if(iterable_element.equalsIgnoreCase("..")){continue;}
             size+=content.get(iterable_element).getSize();
         }
         return size;
