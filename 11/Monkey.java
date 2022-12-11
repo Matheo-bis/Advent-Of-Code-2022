@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Function;
 
-public class Monkey {
+public class Monkey{
     private final ArrayList<Integer> items;
     private final Function<Integer, Integer> operation;
     private final int divisor;
