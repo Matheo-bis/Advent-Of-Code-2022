@@ -27,5 +27,36 @@ public class AoC11 {
         }
         Arrays.sort(buisnesses);
         System.out.println(buisnesses[7]*buisnesses[6]);
+
+        ArrayList<LongMonkey> Longmonkeys = new ArrayList<>();
+//        Longmonkeys.add(new LongMonkey(new Long[]{79L, 98L}, aLong -> aLong*19L, 23L, 2L,3L));
+//        Longmonkeys.add(new LongMonkey(new Long[]{54L, 65L, 75L, 74L}, aLong -> aLong+6L, 19L, 2L, 0L));
+//        Longmonkeys.add(new LongMonkey(new Long[]{79L, 60L, 97L}, aLong -> aLong*aLong, 13L, 1L,3L));
+//        Longmonkeys.add(new LongMonkey(new Long[]{74L}, aLong -> aLong+3L, 17L, 0L, 1L));
+        Longmonkeys.add(new LongMonkey(new Long[]{91L, 66L}, integer -> integer*13, 19,6,2));
+        Longmonkeys.add(new LongMonkey(new Long[]{78L, 97L, 59L}, integer -> integer+7, 5,0,3));
+        Longmonkeys.add(new LongMonkey(new Long[]{57L, 59L, 97L, 84L, 72L, 83L, 56L, 76L}, integer -> integer+6, 11,5,7));
+        Longmonkeys.add(new LongMonkey(new Long[]{81L, 78L, 70L, 58L, 84L}, integer -> integer+5, 17,6,0));
+        Longmonkeys.add(new LongMonkey(new Long[]{60L}, integer -> integer+8, 7,1,3));
+        Longmonkeys.add(new LongMonkey(new Long[]{57L, 69L, 63L, 75L, 62L, 77L, 72L}, integer -> integer*5, 13,7,4));
+        Longmonkeys.add(new LongMonkey(new Long[]{73L, 66L, 86L, 79L, 98L, 87L}, integer -> integer*integer, 3,5,2));
+        Longmonkeys.add(new LongMonkey(new Long[]{95L, 89L, 63L, 67L}, integer -> integer+2, 2,1,4));
+
+        for (int i = 0; i < 10000; i++) {
+            for(LongMonkey monkey : Longmonkeys){
+                while (monkey.has_items_left()){
+                    long[] instruction = monkey.execute();
+                    Longmonkeys.get((int) instruction[1]).add(instruction[0]);
+                }
+            }
+        }
+        long[] Longbuisnesses = new long[8];
+        for (int i = 0; i < Longmonkeys.size(); i++) {
+            Longbuisnesses[i]=Longmonkeys.get(i).getProcessed_items();
+            System.out.println(Longmonkeys.get(i).getProcessed_items());
+        }
+        Arrays.sort(Longbuisnesses);
+        System.out.println(Longbuisnesses[7]*Longbuisnesses[6]);
+
     }
 }

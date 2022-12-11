@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Function;
 
-public class Monkey{
-    private final ArrayList<Integer> items;
-    private final Function<Integer, Integer> operation;
-    private final int divisor;
-    private final int throw_true;
-    private final int throw_false;
-    private int processed_items=0;
+public class LongMonkey {
+    private final ArrayList<Long> items;
+    private final Function<Long, Long> operation;
+    private final long divisor;
+    private final long throw_true;
+    private final long throw_false;
+    private long processed_items=0;
 
-    Monkey(Integer[] _items, Function<Integer, Integer> _operation, int _divisor, int _throw_true, int _throw_false){
+    LongMonkey(Long[] _items, Function<Long, Long> _operation, long _divisor, long _throw_true, long _throw_false){
         items = new ArrayList<>(Arrays.asList(_items));
         operation=_operation;
         divisor=_divisor;
@@ -18,13 +18,12 @@ public class Monkey{
         throw_false=_throw_false;
     }
 
-    public int[] execute(){
+    public long[] execute(){
         processed_items++;
-        int[] ret = new int[2];
-        int item = items.get(0);
+        long[] ret = new long[2];
+        long item = items.get(0);
         items.remove(0);
         item=operation.apply(item);
-        item/=3;
         ret[0]=item;
         if (item % divisor == 0){
             ret[1]=throw_true;
@@ -35,7 +34,7 @@ public class Monkey{
         return ret;
     }
 
-    public int getProcessed_items() {
+    public long getProcessed_items() {
         return processed_items;
     }
 
@@ -43,7 +42,7 @@ public class Monkey{
         return !items.isEmpty();
     }
 
-    public void add(Integer item){
+    public void add(Long item){
         items.add(item);
     }
 }
